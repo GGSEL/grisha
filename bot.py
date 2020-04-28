@@ -9,6 +9,7 @@ from random import choice
 import config
 
 
+
 client = commands.Bot(command_prefix = '.')
 
 @client.event
@@ -47,7 +48,7 @@ async def on_message(message):
 		await client.add_reaction(message, '🧠')
 
 	#delete bad messages
-	for i in delete_msg: 
+	for i in config.delete_msg: 
 		if i in msg:
 			await message.delete()
 			await channel.send(f'Ай-ай-ай, {author.mention},материться тут нельзя!')
@@ -110,7 +111,7 @@ async def kick(ctx, member: discord.Member, *, reason = None):
 	channel = client.get_channel( 704643080036548618 )
 
 	await member.kick(reason = reason)
-	await channel.send(embed = discord.Embed(description = f'``{member.name}`` кикнут: {reason}', color = 0x0c0c0c ))
+	await channel.send(embed = discord.Embed(description = f'``{member.name}`` кикнут: {reason}', color = 0x9c5c0c ))
 
 
 #ban
@@ -148,14 +149,14 @@ async def unban(ctx, *, member):
 async def mute(ctx, member: discord.Member, reason = None, amount = 1):
 	await ctx.channel.purge(limit = 1)
 
-	delete_r = discord.utils.get(member.guild.roles, id = 697464842805575731)
-	role     = discord.utils.get(member.guild.roles, id = 697456709651791973)
+	delete_r = discord.utils.get(member.guild.roles, id = 697031247095922689)
+	role     = discord.utils.get(member.guild.roles, id = 697455208372109383)
 
 	channel = client.get_channel( 704643080036548618 )
 
 	await member.remove_roles(delete_r)
 	await member.add_roles(role)
-	await channel.send(embed = discord.Embed(description = f'``{member.name}`` замутин: {reason}', color = 0x0c3c2c ))
+	await channel.send(embed = discord.Embed(description = f'``{member.name}`` замучен: {reason}', color = 0x0c3c2c ))
 
 #invite member to voice channel
 @client.command(pass_context = True)
