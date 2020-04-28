@@ -147,9 +147,9 @@ async def unban(ctx, *, member):
 		channel = client.get_channel( 704681348979359745 )
 
 		await ctx.guild.unban(user)
-		await channel.send(embed = discord.Embed(description = random.choice(config.unban_message).format(member.mention), color = 0x0c0c4c ))
 
 		return
+	await channel.send(embed = discord.Embed(description = random.choice(config.unban_message).format(member.mention), color = 0x0c0c4c ))
 
 #mute
 @client.command(pass_context = True)
