@@ -157,6 +157,18 @@ async def mute(ctx, member: discord.Member, reason = None, amount = 1):
 	await member.remove_roles(delete_r)
 	await member.add_roles(role)
 	await channel.send(embed = discord.Embed(description = f'``{member.name}`` замучен: {reason}', color = 0x0c3c2c ))
+	
+# unmute
+@client.command(pass_context = True)
+@commands.has_permissions(administrator = True)
+async def unmute(ctx, member: discord.Member, amount = 1):
+	await ctx.channel.purge(limit = 1)
+
+	role       = discord.utils.get(member.guild.roles, id = 697031247095922689)
+	delete_r   = discord.utils.get(member.guild.roles, id = 697455208372109383)
+
+	await member.remove_roles(delete_r)
+	await member.add_roles(role)
 
 #invite member to voice channel
 @client.command(pass_context = True)
