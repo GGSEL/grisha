@@ -191,7 +191,7 @@ async def unmute(ctx, member: discord.Member, amount = 1):
 @client.command(pass_context = True)
 async def invite_vchat(ctx, member: discord.Member):
 	await ctx.channel.purge(limit = 1)
-	channel = client.get_channel( 704743348056883210 )
+	channel = client.get_channel( 695630701114032223 )
 	author = ctx.author
 
 	msg = random.choice(config.invite_vchat_message)
