@@ -135,6 +135,8 @@ async def ban(ctx, member: discord.Member):
 	await member.ban()
 	await channel.send(embed = discord.Embed(description = msg.format(member.mention), color = 0xc0c0fc ))
 
+	await member.send('Вы были забанены на сервере "Счасливы вместе"!')
+
 #unban
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
@@ -151,6 +153,7 @@ async def unban(ctx, *, user):
 		await ctx.guild.unban(user)
 
 		await channel.send(embed = discord.Embed(description = msg.format(user.mention), color = 0x0c0c4c ))
+		await user.send('Вы были разбанены на сервере "Счасливы вместе"!')
 
 		return 
 
