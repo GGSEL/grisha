@@ -4,21 +4,8 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
 import asyncio
-
-delete_msg = [
-'хуй', 
-'ебанутся', 
-'ебануться', 
-'блять', 'бля', 
-'блядь', 'ебать', 
-'пизда', 
-'пиздец',
-'сука',
-'поздабол',
-'пиздабол',
-'ебать',
-'пизди']
-
+import random
+from random import choice
 
 client = commands.Bot(command_prefix = '.')
 
@@ -33,7 +20,7 @@ async def on_member_join(member):
 	role = discord.utils.get(member.guild.roles, id = 697031247095922689)
 
 	await member.add_roles(role)
-	await channel.send(embed = discord.Embed(description = f'Пользователь ``{member.name}`` присоеденился к нам!', color = 0x0c0c0c ))
+	await channel.send(embed = discord.Embed(description = random.choice(config.join_messages).format(member.name), color = 0x0c0c0c ))
 
 
 @client.event
