@@ -6,6 +6,8 @@ from discord.utils import get
 import asyncio
 import random
 from random import choice
+import config
+
 
 client = commands.Bot(command_prefix = '.')
 
