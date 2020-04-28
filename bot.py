@@ -133,7 +133,7 @@ async def ban(ctx, member: discord.Member):
 	msg = random.choice(config.ban_message)
 
 	await member.ban()
-	await channel.send(embed = discord.Embed(description = msg.format(member.mention).format(member.mention), color = 0xc0c0fc ))
+	await channel.send(embed = discord.Embed(description = msg.format(member.mention), color = 0xc0c0fc ))
 
 #unban
 @client.command(pass_context = True)
@@ -185,18 +185,18 @@ async def unmute(ctx, member: discord.Member, amount = 1):
 
 	await member.remove_roles(delete_r)
 	await member.add_roles(role)
-	await channel.send(embed = discord.Embed(description = msg.format(member.mention).format(member.mention), color = 0x887764 ))
+	await channel.send(embed = discord.Embed(description = msg.format(member.mention), color = 0x887764 ))
 
 #invite member to voice channel
 @client.command(pass_context = True)
 async def invite_vchat(ctx, member: discord.Member):
 	await ctx.channel.purge(limit = 1)
-	channel = client.get_channel( 695630701114032223 )
+	channel = client.get_channel( 704743348056883210 )
 	author = ctx.author
 
-	msg = random.choice(config.join_messages_message)
+	msg = random.choice(config.invite_vchat_message)
 
-	await channel.send(embed = discord.Embed(description = msg.format(member.mention).format(member.mention), color = 0x00FF00 ))
+	await channel.send(embed = discord.Embed(description = msg.format(member.mention), color = 0x00FF00 ))
 	await member.send(f'{author} приглашает Вас в голосовой чат!')
 
 
