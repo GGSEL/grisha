@@ -8,7 +8,6 @@ import random
 from random import choice
 import config
 import time
-import l_func
 
 client = commands.Bot(command_prefix = '.')
 
