@@ -1,3 +1,9 @@
+import discord 
+from discord.ext import commands
+from discord.ext.commands import Bot
+import asyncio
+
+
 client = commands.Bot(command_prefix = '.')
 
 #clear command
@@ -46,3 +52,8 @@ async def say_by_bot(ctx, message):
 	channel = ctx.channel
 
 	await channel.send(message)
+	
+	
+
+token = os.environ.get('BOT_TOKEN')
+client.run(str(token))
