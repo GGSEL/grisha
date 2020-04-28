@@ -20,7 +20,7 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
 	channel = client.get_channel( channels_id[0] )
-	role = discord.utils.get(member.guild.roles, id = 704744324247584829)
+	role = discord.utils.get(member.guild.roles, id = 697031247095922689)
 
 	await member.add_roles(role)
 	await channel.send(embed = discord.Embed(description = random.choice(config.join_messages).format(member.name), color = 0x00FF00 ))
