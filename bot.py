@@ -29,7 +29,7 @@ async def on_ready():
 #join server
 @client.event
 async def on_member_join(member):
-	channel = client.get_channel( 695630701114032223 )
+	channel = client.get_channel( 704641109103476806 )
 	role = discord.utils.get(member.guild.roles, id = 697031247095922689)
 
 	await member.add_roles(role)
@@ -38,7 +38,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_member_remove(member):
-	channel = client.get_channel( 695630701114032223 )
+	channel = client.get_channel( 704641304814026816 )
 	await channel.send(embed = discord.Embed(description = f'Пользователь ``{member.name}`` покинул сервер', color = 0xc05520 ))
 
 @client.event 
@@ -118,20 +118,23 @@ async def hello_prv(ctx, member: discord.Member, amount = 1):
 @commands.has_permissions(administrator = True)
 async def kick(ctx, member: discord.Member, *, reason = None):
 	await ctx.channel.purge(limit = 1)
+	channel = client.get_channel( 704643080036548618 )
 
 	await member.kick(reason = reason)
-	await ctx.send(f'{member.mention} кикнут' + reason)
+	await channel.send(embed = discord.Embed(description = f'``{member.name}`` кикнут: {reason}', color = 0x0c0c0c ))
+
 
 #ban
 @client.command(pass_context = True)
 @commands.has_permissions(administrator = True)
 async def ban(ctx, member: discord.Member, *, reason = None):
 	await ctx.channel.purge(limit = 1)
+	channel = client.get_channel( 704643080036548618 )
 
 	await member.ban(reason = reason)
-	await ctx.send(f'Бот забанил пользователя {member.mention}' + reason)
+	await channel.send(embed = discord.Embed(description = f'``{member.name}`` забанен: {reason}', color = 0xc0c0fc ))
 
-	await member.send('Вы были забанены Ботом' + reason)
+	await member.send('Вы были забанены Ботом. Причина: ' + reason)
 
 #unban
 @client.command(pass_context = True)
@@ -143,9 +146,10 @@ async def unban(ctx, *, member):
 
 	for ban_entry in banned_users:
 		user = ban_entry.user
+		channel = client.get_channel( 704643080036548618 )
 
 		await ctx.guild.unban(user)
-		await ctx.send(f'Разбанен пользователь {user.mention}')
+		await channel.send(embed = discord.Embed(description = f'``{member.name}`` разбанен: {reason}', color = 0x0c0c4c ))
 
 		return
 
@@ -158,9 +162,11 @@ async def mute(ctx, member: discord.Member, reason = None, amount = 1):
 	delete_r = discord.utils.get(member.guild.roles, id = 697464842805575731)
 	role     = discord.utils.get(member.guild.roles, id = 697456709651791973)
 
+	channel = client.get_channel( 704643080036548618 )
+
 	await member.remove_roles(delete_r)
 	await member.add_roles(role)
-	await ctx.send(f'Пользователь {member.mention} получил мут! Причина: ' + reason)
+	await channel.send(embed = discord.Embed(description = f'``{member.name}`` замутин: {reason}', color = 0x0c3c2c ))
 
 #invite member to voice channel
 @client.command(pass_context = True)
