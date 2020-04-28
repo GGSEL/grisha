@@ -191,11 +191,14 @@ async def unmute(ctx, member: discord.Member, amount = 1):
 @client.command(pass_context = True)
 async def invite_vchat(ctx, member: discord.Member):
 	await ctx.channel.purge(limit = 1)
-	channel = client.get_channel( channels_id[0] )
+	channel = client.get_channel( 695630701114032223 )
 	author = ctx.author
+
+	msg = random.choice(config.join_messages_message)
 
 	await channel.send(embed = discord.Embed(description = msg.format(member.mention).format(member.mention), color = 0x00FF00 ))
 	await member.send(f'{author} приглашает Вас в голосовой чат!')
+
 
 
 
