@@ -181,7 +181,7 @@ async def unmute(ctx, member: discord.Member, amount = 1):
 	role       = discord.utils.get(member.guild.roles, id = 697031247095922689)
 	delete_r   = discord.utils.get(member.guild.roles, id = 697455208372109383)
 
-	msg = random.choice(config.unban_message)
+	msg = random.choice(config.unmute_message)
 
 	await member.remove_roles(delete_r)
 	await member.add_roles(role)
