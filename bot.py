@@ -8,6 +8,7 @@ import random
 from random import choice
 import config
 import time
+import l_func
 
 client = commands.Bot(command_prefix = '.')
 
@@ -82,6 +83,8 @@ async def kick(ctx, member: discord.Member):
 @commands.has_permissions(administrator = True)
 async def ban(ctx, member: discord.Member):
 	await ctx.channel.purge(limit = 1)
+	
+	await member.ban()
 	channel = client.get_channel( 704643080036548618 )
 	await channel.send(embed = discord.Embed(description = random.choice(config.ban_message).format(member.mention), color = 0xc0c0fc ))
 
